@@ -60,6 +60,18 @@ export const entityStateDisplay = (hass, stateObj, config) => {
             });
         } else if (config.format === 'kilo') {
             value = formatNumber(value / 1000, hass.locale, { maximumFractionDigits: 2 });
+        } else if (config.format.startsWith('kilo')) {
+            const precision = parseInt(config.format.slice(-1), 5);
+            value = formatNumber(parseFloat(value)/1000, hass.locale, {
+                minimumFractionDigits: precision,
+                maximumFractionDigits: precision,
+            });
+        } else if (config.format.startsWith('mega')) {
+            const precision = parseInt(config.format.slice(-1), 5);
+            value = formatNumber(parseFloat(value)/1000000, hass.locale, {
+                minimumFractionDigits: precision,
+                maximumFractionDigits: precision,
+            });
         } else if (config.format === 'invert') {
             value = formatNumber(value - value * 2, hass.locale);
         } else if (config.format === 'position') {

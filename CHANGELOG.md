@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 4.5.2
+
+**Added:**
+- format kilo#, where # is number of digits
+- format mega#, where # is number of digits
+
 ## 4.5.1
 
 **Fixed:**
